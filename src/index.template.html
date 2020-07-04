@@ -1,5 +1,109 @@
 <!DOCTYPE html>
 <html>
-  <head></head>
-  <body></body>
+  <head>
+    <style type="text/css">
+      body {
+        background-image: url("./ugeRight.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 300px;
+        background-color: bisque;
+      }
+      span {
+        /*skew rotate   */
+        font-size: 15px;
+        background-color: white;
+        padding: 10px 10px 10px 10px;
+        border: 3px solid black;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.6);
+      }
+      #identity {
+        height: 20px;
+        vertical-align: middle;
+      }
+    </style>
+    <script
+      type="text/javascript"
+      src="https://www.youtube.com/iframe_api"
+      async
+    ></script>
+  </head>
+  <body>
+    <!-- Placeholder for YouTube <iframe> -->
+    <div id="player"></div>
+    <span
+      id="c1"
+      style="
+        position: absolute;
+        top: 100px;
+        left: 50px;
+        transform: rotate(3deg);
+      "
+      ><image id="identity" src="./identity.png"></image>
+      ラーメンを食べに行く</span
+    >
+    <span
+      id="c2"
+      style="
+        position: absolute;
+        top: 140px;
+        left: 110px;
+        transform: rotate(-1deg);
+      "
+      ><image id="identity" src="./identity.png"></image> 肩たたき</span
+    >
+    <span
+      id="c3"
+      style="
+        position: absolute;
+        top: 250px;
+        left: 120px;
+        transform: rotate(3deg);
+      "
+      ><image id="identity" src="./identity.png"></image> もちつき！</span
+    >
+    <span
+      id="c4"
+      style="
+        position: absolute;
+        top: 200px;
+        left: 100px;
+        transform: rotate(-10deg);
+      "
+      ><image id="identity" src="./identity.png"></image> 掃除？</span
+    >
+    <span
+      id="c5"
+      style="
+        position: absolute;
+        top: 160px;
+        left: 30px;
+        transform: rotate(3deg);
+      "
+      ><image id="identity" src="./identity.png"></image> 雪かき</span
+    >
+    <script>
+      function onYouTubeIframeAPIReady() {
+        window.player = new YT.Player("player", {
+          height: "360",
+          width: "640",
+          videoId: "Yh88B1zLl5c",
+          events: {
+            onReady: (event) => event.target.playVideo(),
+            onStateChange: (evt) => {
+              const statusCode = evt.data;
+              if (statusCode === 1) {
+                const currentBelongingRelMin = Math.floor(
+                  window.player.getCurrentTime() / 60
+                );
+                window.commentReserver.reserve(currentBelongingRelMin, true);
+              } else {
+                window.commentReserver.clearReservation();
+              }
+            },
+          },
+        });
+      }
+    </script>
+  </body>
 </html>
