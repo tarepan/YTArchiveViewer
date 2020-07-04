@@ -1,0 +1,28 @@
+{
+  "name": "templateWebDevContainer",
+  "dockerFile": "Dockerfile",
+  "mounts": [
+    "source=/var/run/docker.sock,target=/var/run/docker-host.sock,type=bind"
+    // "source=${localEnv:HOME}${localEnv:USERPROFILE}/envDir/env.env,target=/var/env.env,type=bind"
+  ],
+  //   "runArgs": [
+  //     "--env-file",
+  //     "${localEnv:HOME}${localEnv:USERPROFILE}/envDir/env.env"
+  //   ],
+  "forwardPorts": [8000],
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/bash"
+  },
+  "extensions": [
+    "ms-azuretools.vscode-docker",
+    "orta.vscode-jest",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "visualstudioexptteam.vscodeintellicode",
+    "mhutchie.git-graph",
+    "yzhang.markdown-all-in-one",
+    "bierner.lit-html"
+  ],
+  "postCreateCommand": "npm install"
+  // "remoteUser": "node"
+}
